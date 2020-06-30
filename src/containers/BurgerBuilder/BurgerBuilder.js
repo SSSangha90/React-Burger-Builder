@@ -14,12 +14,12 @@ const INGREDIENT_PRICES = {
     salad: 0.5,
     cheese: 0.99,
     meat: 4.99,
-    bacon: 1.99
+    bacon: 2.99
 }
 class BurgerBuilder extends Component {
     state = {
         ingredients: null,
-        totalPrice: 2.99,
+        totalPrice: 4.99,
         purchasable: false,
         purchasing: false,
         loading: false,
@@ -27,6 +27,7 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount(){    
+        console.log(this.props)
         axios.get('https://react-food-builder-5dfbf.firebaseio.com/ingredients.json')
         .then(res => {
             this.setState({ingredients: res.data})
@@ -102,6 +103,7 @@ class BurgerBuilder extends Component {
 
     purchaseContinueHandler = () => {
         // alert('You continue!')
+        /*
         this.setState({
             loading: true
         })
@@ -122,6 +124,8 @@ class BurgerBuilder extends Component {
         axios.post('/orders.json', order)
         .then(res => this.setState({ loading: false, purchasing: false }))
         .catch(err => this.setState({ loading: false, purchasing: false }))
+    */
+        this.props.history.push('/checkout');
     }
 
     render () {
