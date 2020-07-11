@@ -12,7 +12,7 @@ class ContactData extends Component {
             street: '',
             postcode: ''
         },
-        loading: false
+        loading: false,
     }
 
     orderHandler = (event) => {
@@ -22,7 +22,7 @@ class ContactData extends Component {
         })
         const order = {
             ingredients: this.props.ingredients,
-            price: this.state.price,
+            price: this.props.price,
             customer: {
                 name: 'Sukhi Sangha',
                 address: {
